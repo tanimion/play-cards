@@ -2,7 +2,11 @@ import Image from 'next/image';
 import { storyblokEditable } from '@storyblok/react';
 const hrefFromLink = (link)=>{ if(!link) return '#'; if(link.linktype==='story'&&link.cached_url) return '/'+link.cached_url; return link.url||link.cached_url||'#'; };
 export default function Card({ blok }) {
-  const href = hrefFromLink(blok.button);
+  // const href = hrefFromLink(blok.button);
+  let href = hrefFromLink(blok.button);
+  if ((!blok.button || href === '#') && blok.detail_story?.[0]?.full_slug) {
+    href = '/' + blok.detail_story[0].full_slug;
+  }
   return (
     <article {...storyblokEditable(blok)} className="flex flex-col justify-start items-start gap-4 rounded-2xl bg-white shadow-sm ring-1 ring-gray-100 transition hover:shadow-md">
       <div className="relative aspect-square w-full overflow-hidden">
