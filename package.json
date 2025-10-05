@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "dev:https": "next dev --experimental-https --port 3000"
   },
   "dependencies": {
     "next": "15.1.0",
