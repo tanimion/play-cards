@@ -9,7 +9,7 @@ export default async function Page({ params }) {
   const sb = getStoryblokApi();
   const version = process.env.NODE_ENV === 'development' ? 'draft' : 'published';
   try {
-    const { data } = await sb.get(`cdn/stories/${slug}`, { version, resolve_relations: ['cards_grid.cards'] });
+    const { data } = await sb.get(`cdn/stories/${slug}`, { version, resolve_relations: ['cards_grid.cards', 'card.detail_story'] });
     return <StoryblokEntry story={data.story} />;
   } catch (e) {
   return (
